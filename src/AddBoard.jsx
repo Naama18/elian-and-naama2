@@ -5,13 +5,24 @@ function AddBoard(props) {
 
   return (
     <>
+      <button>Start Game</button>
+
       <h1>Gamer: {props.user}</h1>
 
       <p>Number: {userData["num"]}</p>
-      <button disabled>+1</button>
-      <button disabled>-1</button>
-      <button disabled>/2</button>
-      <button disabled>*2</button>
+      <button
+        onClick={() => {
+          // TODO: Change the user's number.....
+
+          props.onTurnChange();
+        }}
+        disabled={props.disabled}
+      >
+        +1
+      </button>
+      <button disabled={props.disabled}>-1</button>
+      <button disabled={props.disabled}>/2</button>
+      <button disabled={props.disabled}>*2</button>
     </>
   );
 }

@@ -10,8 +10,6 @@ function App() {
     <>
       <button onClick={() => setDisplaySign(true)}>Add gamer</button>
       {displaySign && <SignIn />}
-
-      <button>Start Game</button>
     </>
   );
 }
