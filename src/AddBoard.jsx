@@ -5,8 +5,6 @@ function AddBoard(props) {
 
   return (
     <>
-      <button>Start Game</button>
-
       <h1>Gamer: {props.user}</h1>
 
       <p>Number: {userData["num"]}</p>

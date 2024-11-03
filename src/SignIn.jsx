@@ -57,6 +57,7 @@ function SignIn() {
         <label>Submit</label>
         <input id="submit" type="submit" value="Submit" />
       </form>
+      <button>Start Game</button>
 
       {displayBoard && (
         <ListUsers
