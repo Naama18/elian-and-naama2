@@ -8,7 +8,7 @@ let arr;
 function SignIn() {
   const [inputValue, setInputValue] = useState("");
   const [displayBoard, setDisplayBoard] = useState(false);
-  const [users, setUsers] = useState(localStorage.getItem("users"));
+  const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users")));
   const [currentUserName, setCurrentUserName] = useState();
 
   function userExist() {
@@ -58,6 +58,7 @@ function SignIn() {
         onClick={() => {
           setCurrentUserName(users[0]);
         }}
+        disabled={currentUserName || users.length === 0}
       >
         Start Game
       </button>
