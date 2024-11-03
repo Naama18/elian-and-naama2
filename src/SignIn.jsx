@@ -9,7 +9,7 @@ function SignIn() {
   const [inputValue, setInputValue] = useState("");
   const [displayBoard, setDisplayBoard] = useState(false);
   const [users, setUsers] = useState(localStorage.getItem("users"));
-  const [currentUserName, setCurrentUserName] = useState(users[0]);
+  const [currentUserName, setCurrentUserName] = useState();
 
   function userExist() {
     if (!localStorage.getItem(inputValue)) {
@@ -19,9 +19,6 @@ function SignIn() {
       localStorage.setItem("users", JSON.stringify(arr));
 
       setUsers(JSON.parse(localStorage.getItem("users")));
-      // TODO: instead of doing this here,
-      // TODO: do this when "start game" is pressed
-      setCurrentUserName(arr[0]);
 
       localStorage.setItem(
         inputValue,
@@ -57,7 +54,13 @@ function SignIn() {
         <label>Submit</label>
         <input id="submit" type="submit" value="Submit" />
       </form>
-      <button>Start Game</button>
+      <button
+        onClick={() => {
+          setCurrentUserName(users[0]);
+        }}
+      >
+        Start Game
+      </button>
 
       {displayBoard && (
         <ListUsers
