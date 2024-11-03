@@ -8,10 +8,10 @@ function AddBoard(props) {
       <h1>Gamer: {props.user}</h1>
 
       <p>Number: {userData["num"]}</p>
-      <button>+1</button>
-      <button>-1</button>
-      <button>/2</button>
-      <button>*2</button>
+      <button disabled>+1</button>
+      <button disabled>-1</button>
+      <button disabled>/2</button>
+      <button disabled>*2</button>
     </>
   );
 }

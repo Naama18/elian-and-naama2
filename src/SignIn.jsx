@@ -13,6 +13,7 @@ function SignIn() {
       arr = JSON.parse(localStorage.getItem("users"));
       arr.push(current);
       localStorage.setItem("users", JSON.stringify(arr));
+      setUsers(JSON.parse(localStorage.getItem("users")));
       localStorage.setItem(
         current,
         JSON.stringify({
@@ -46,7 +47,7 @@ function SignIn() {
           setDisplayBoard(true);
         }}
       />
-      {true && (
+      {setDisplayBoard && (
         <ListUsers
         // name={current}
         // userNameData={JSON.parse(localStorage.getItem(current))}

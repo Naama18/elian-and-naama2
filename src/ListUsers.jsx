@@ -1,11 +1,11 @@
 import AddBoard from "./AddBoard";
 
 function ListUsers(props) {
-  const onlineUsers = JSON.parse(localStorage.getItem("users"));
+  const onlineUsers = JSON.parse(localStorage.getItem("users")) || [];
   return (
     <>
-      {onlineUsers.map((user) => (
-        <AddBoard user={user} />
+      {onlineUsers.map((user, index) => (
+        <AddBoard key={index} user={user} />
       ))}
     </>
   );
