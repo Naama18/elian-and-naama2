@@ -9,11 +9,12 @@ function AddBoard(props) {
   // console.log(userData);
   const [userNumber, setUserNumber] = useState(user["num"]);
   const [userSteps, setUserSteps] = useState(0);
-  const [gamesAmount, setGamesAmount] = useState(0);
+  const [gamesAmount, setGamesAmount] = useState(
+    JSON.parse(localStorage.getItem(props.user))["steps"].length
+  );
 
   function updateScoreLocalStorage() {
     const updatedLocalStorage = JSON.parse(localStorage.getItem(props.user));
-    console.log(gamesAmount);
     updatedLocalStorage["steps"][gamesAmount] = userSteps;
     localStorage.setItem(props.user, JSON.stringify(updatedLocalStorage));
   }
@@ -53,7 +54,13 @@ function AddBoard(props) {
       prev.splice(index, 1);
       return [...prev];
     });
-    console.log("here");
+  }
+  function displayScores() {
+    console.log("IM HERE");
+    const stepsArray = JSON.parse(localStorage.getItem(props.user))["steps"];
+    stepsArray.map((index, step) => {
+      return <span>{step}</span>;
+    });
   }
   return (
     <>
@@ -102,9 +109,12 @@ function AddBoard(props) {
       ) : (
         <>
           <p>
-            {console.log(JSON.parse(localStorage.getItem(props.user))["steps"])}
-            {props.user} Scores:{" "}
-            {JSON.parse(localStorage.getItem(props.user))["steps"]}
+            {props.user} Scores:
+            {JSON.parse(localStorage.getItem(props.user))["steps"].map(
+              (step) => (
+                <span>{step + ","}</span>
+              )
+            )}
           </p>
           <button
             onClick={() => {

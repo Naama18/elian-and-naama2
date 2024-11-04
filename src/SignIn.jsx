@@ -26,9 +26,14 @@ function SignIn() {
           num: Math.floor(Math.random() * 100),
           steps: [],
           status: "Online",
-          gamesAmount: 0,
         })
       );
+    } else {
+      const existingUser = JSON.parse(localStorage.getItem(inputValue));
+      console.log(existingUser);
+      existingUser["num"] = Math.floor(Math.random() * 100);
+
+      localStorage.setItem(inputValue, JSON.stringify(existingUser));
     }
     // } else {
     //   alert("userName already exist, TRY ANOTHER NAME");
