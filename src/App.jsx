@@ -8,6 +8,8 @@ function App() {
 
   return (
     <>
+      <h1>Welcome to GO TO 100!</h1>
+
       <button onClick={() => setDisplaySign(true)}>Add gamer</button>
       {displaySign && <SignIn />}
     </>

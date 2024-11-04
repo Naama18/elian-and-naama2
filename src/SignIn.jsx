@@ -12,7 +12,6 @@ function SignIn() {
   const [currentUserName, setCurrentUserName] = useState();
 
   function userExist() {
-    // if (!localStorage.getItem(inputValue)) {
     arr = JSON.parse(localStorage.getItem("users"));
     arr.push(inputValue);
 
@@ -20,14 +19,17 @@ function SignIn() {
 
     setUsers(JSON.parse(localStorage.getItem("users")));
 
-    localStorage.setItem(
-      inputValue,
-      JSON.stringify({
-        num: Math.floor(Math.random() * 100),
-        steps: 0,
-        status: "Online",
-      })
-    );
+    if (!localStorage.getItem(inputValue)) {
+      localStorage.setItem(
+        inputValue,
+        JSON.stringify({
+          num: Math.floor(Math.random() * 100),
+          steps: [],
+          status: "Online",
+          gamesAmount: 0,
+        })
+      );
+    }
     // } else {
     //   alert("userName already exist, TRY ANOTHER NAME");
     // }

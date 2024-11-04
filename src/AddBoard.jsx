@@ -9,30 +9,34 @@ function AddBoard(props) {
   // console.log(userData);
   const [userNumber, setUserNumber] = useState(user["num"]);
   const [userSteps, setUserSteps] = useState(0);
-  const [currentUserName, setCurrentUserName] = useState(props.user);
+  const [gamesAmount, setGamesAmount] = useState(0);
 
   function updateScoreLocalStorage() {
     const updatedLocalStorage = JSON.parse(localStorage.getItem(props.user));
-    updatedLocalStorage["steps"] = userSteps;
+    console.log(gamesAmount);
+    updatedLocalStorage["steps"][gamesAmount] = userSteps;
     localStorage.setItem(props.user, JSON.stringify(updatedLocalStorage));
   }
 
   function calculate(mathOperator, number) {
     switch (mathOperator) {
       case "+":
-        updateScoreLocalStorage();
         setUserSteps(userSteps + 1);
+
+        updateScoreLocalStorage();
         setUserNumber(userNumber + number);
         break;
       case "-":
-        updateScoreLocalStorage();
         setUserSteps(userSteps + 1);
+
+        updateScoreLocalStorage();
         setUserNumber(userNumber - number);
 
         break;
       case "/":
-        updateScoreLocalStorage();
         setUserSteps(userSteps + 1);
+
+        updateScoreLocalStorage();
         setUserNumber(Math.floor(userNumber / number));
         break;
       case "*":
@@ -97,16 +101,28 @@ function AddBoard(props) {
         </>
       ) : (
         <>
+          <p>
+            {console.log(JSON.parse(localStorage.getItem(props.user))["steps"])}
+            {props.user} Scores:{" "}
+            {JSON.parse(localStorage.getItem(props.user))["steps"]}
+          </p>
           <button
             onClick={() => {
               AddBoard,
                 setUserNumber(Math.floor(Math.random() * 100)),
-                setUserSteps(0);
+                setUserSteps(0),
+                setGamesAmount(gamesAmount + 1);
             }}
           >
             Start Over
           </button>
-          <button onClick={() => removeUserFromWindow(props.user)}>Quit</button>
+          <button
+            onClick={() => {
+              removeUserFromWindow(props.user);
+            }}
+          >
+            Quit
+          </button>
         </>
       )}
     </>
