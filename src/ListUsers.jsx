@@ -1,6 +1,7 @@
 import AddBoard from "./AddBoard";
 
 function ListUsers(props) {
+  console.log("props.users: ", props.users);
   return (
     <>
       {props.users.map((user, index) => (
@@ -9,6 +10,8 @@ function ListUsers(props) {
           key={index}
           user={user}
           disabled={user !== props.currentUserName}
+          setUsers={props.setUsers}
+          users={props.users}
         />
       ))}
     </>
