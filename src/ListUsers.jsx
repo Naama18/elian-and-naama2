@@ -7,7 +7,7 @@ function ListUsers(props) {
       {props.users.map((user, index) => (
         <AddBoard
           onTurnChange={props.onTurnChange}
-          key={index}
+          key={user}
           user={user}
           disabled={user !== props.currentUserName}
           setUsers={props.setUsers}

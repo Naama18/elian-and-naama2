@@ -55,13 +55,7 @@ function AddBoard(props) {
       return [...prev];
     });
   }
-  function displayScores() {
-    console.log("IM HERE");
-    const stepsArray = JSON.parse(localStorage.getItem(props.user))["steps"];
-    stepsArray.map((index, step) => {
-      return <span>{step}</span>;
-    });
-  }
+
   return (
     <>
       <h1>Gamer: {props.user}</h1>
